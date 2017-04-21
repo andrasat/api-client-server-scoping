@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Client Server Scoping</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  </head>
+  <body>
+
+    <% if(msg) { %>
+    <h1 id="heading"><%= msg %></h1>
+    <% } else { %>
+    <h1 id="heading">Test</h1>
+    <% } %>
+
+    <button id="the-button">Click this</button>
+    <a id="link-change" href="/skills/ganti-dari-sini">Ke Skills</a>
+    <a id="meal-link" href="/meals">Ke Meals</a>
+    <script>
+
+      $('#the-button').click(function() {
+        $('#heading').html($('#the-button').html())
+      })
+
+      let locNow = location.href
+      console.log(locNow.substring(22))
+      let meals = ['Burger','Ayam','Steak','Sayur','Buncis']
+      if(locNow.substring(22) == 'meals') {
+        $('#heading').html(meals[Math.floor(Math.random() * meals.length)])
+      }
+
+    </script>
+  </body>
+</html>
